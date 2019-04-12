@@ -1,0 +1,103 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="NotificationSystem.Properties" GeneratedClassName="EndarProcessorSettings">
+  <Profiles />
+  <Settings>
+    <Setting Name="TimeSpan" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">30000</Value>
+    </Setting>
+    <Setting Name="EmailFrom" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EnDAR@tetratech.com</Value>
+    </Setting>
+    <Setting Name="UseInstallPathForLogging" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="DefaultRecipient" Type="System.String" Scope="User">
+      <Value Profile="(Default)">kateryna.sayenko@tetratech.com</Value>
+    </Setting>
+    <Setting Name="IsBodyHtml" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="IsNetworkCredential" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="Domain" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Domain</Value>
+    </Setting>
+    <Setting Name="TimeoutCallBack" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">10000</Value>
+    </Setting>
+    <Setting Name="SMTPServer" Type="System.String" Scope="User">
+      <Value Profile="(Default)">smtp.gmail.com</Value>
+    </Setting>
+    <Setting Name="SMTPUser" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ksayenko@gmail.com</Value>
+    </Setting>
+    <Setting Name="IsEnableSSl" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="LogPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Users\kateryna.sayenko\Documents\Visual Studio 2012\Projects\NotificationSystem\NotificationSystem\bin\Release\LOGS</Value>
+    </Setting>
+    <Setting Name="SMTPPassword" Type="System.String" Scope="User">
+      <Value Profile="(Default)">nizekzutmppluzaf</Value>
+    </Setting>
+    <Setting Name="SMTPPort" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">465</Value>
+    </Setting>
+    <Setting Name="Write_to_System_Table" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
+    <Setting Name="SystemSectionName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EndarNotification</Value>
+    </Setting>
+    <Setting Name="SystemSectionInfo1" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LastRun</Value>
+    </Setting>
+    <Setting Name="SystemSectionInfo2" Type="System.String" Scope="User">
+      <Value Profile="(Default)">LastEmailSend</Value>
+    </Setting>
+    <Setting Name="ServiceName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">EnDARDatabaseNotificationService</Value>
+    </Setting>
+    <Setting Name="Send_Time_Seconds" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">600</Value>
+    </Setting>
+    <Setting Name="Data_Source" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;DIVS704SQL1\MSSQLPUBLIC&lt;/string&gt;
+  &lt;string&gt;DIVS704SQL1\MSSQLPUBLIC&lt;/string&gt;
+  &lt;string&gt;DIVS704SQL1\MSSQLPUBLIC&lt;/string&gt;
+  &lt;string&gt;DIVS704SQL1\MSSQLPUBLIC&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="InitialCatalog" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;ENDAR&lt;/string&gt;
+  &lt;string&gt;ENDAR_CIMP&lt;/string&gt;
+  &lt;string&gt;ENDAR_Ghent&lt;/string&gt;
+  &lt;string&gt;ENDAR_Ghent&lt;/string&gt;
+  &lt;string&gt;ENDAR_CCWQP&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DatabasePassword" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;NotificationUser01&lt;/string&gt;
+  &lt;string&gt;NotificationUser01&lt;/string&gt;
+  &lt;string&gt;NotificationUser01&lt;/string&gt;
+  &lt;string&gt;NotificationUser01&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="DatabaseUser" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;NotificationUser&lt;/string&gt;
+  &lt;string&gt;NotificationUser&lt;/string&gt;
+  &lt;string&gt;NotificationUser&lt;/string&gt;
+  &lt;string&gt;NotificationUser&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
