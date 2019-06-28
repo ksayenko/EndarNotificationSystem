@@ -12,6 +12,7 @@ using System.IO;
 using SendMail;
 using System.Windows.Forms;
 using System.Timers;
+using System.Threading;
 
 
 namespace NotificationSystem
@@ -54,6 +55,10 @@ namespace NotificationSystem
         public string SYSTEM_SECTION_NAME;
         public string SECTION_INFO1;
         public string SECTION_INFO2;
+
+        //exit_codes
+        public static int EXIT_CODE_SUCCESS = 0;
+        public static int EXIT_NEED_RESTART = 54;//ERROR_NETWORK_BUSY
                     
         DataAccess da = null;
         LogHandler erh = null;
@@ -101,6 +106,7 @@ namespace NotificationSystem
             InitializeComponent();
             SetDefaultValues();
             this.CanShutdown = true;
+            this.CanPauseAndContinue = true;
            
             this.ServiceName = Properties.EndarProcessorSettings.Default.ServiceName; //"EnDARDatabaseNotificationService";
             this.EventLog.Log = "Application";
@@ -108,7 +114,6 @@ namespace NotificationSystem
 
             this.CanHandlePowerEvent = true;
             this.CanHandleSessionChangeEvent = true;
-            this.CanPauseAndContinue = true;
             this.CanShutdown = true;
             this.CanStop = true;         
          
@@ -361,8 +366,8 @@ namespace NotificationSystem
                 nTimer.Enabled = false;
                 nTimer = null;
 
-                if (IS_WRITE_TO_SYSTEM_TABLE)
-                    da.Update_System_Status_LastServiceRun(SYSTEM_SECTION_NAME,SECTION_INFO1,"Endar notification service stoped ");
+                if (IS_WRITE_TO_SYSTEM_TABLE && da != null)
+                    da.Update_System_Status_LastServiceRun(SYSTEM_SECTION_NAME,SECTION_INFO1,"Endar notification service stopped ");
               
             }
             catch (Exception ex)
@@ -370,13 +375,47 @@ namespace NotificationSystem
                 erh.LogWarning("Endar notification service stopping " + ex.ToString(), true); 
             }
 
+            if (this.ExitCode == NotificationService.EXIT_NEED_RESTART)
+            {
+                this.CanPauseAndContinue = true;
+            }
+            else
+            {
+                this.ExitCode = NotificationService.EXIT_CODE_SUCCESS;
+               
+            }
+            base.OnStop();
             
         }
+
+        protected override void OnPause()
+        {
+            erh.LogWarning("Endar notification service pausing ", true);
+            Thread.Sleep(1000);
+            try
+            {
+                // Service stopped. Also stop the timer.
+                nTimer.Enabled = false;
+                nTimer = null;
+
+                if (IS_WRITE_TO_SYSTEM_TABLE && da!=null)
+                    da.Update_System_Status_LastServiceRun(SYSTEM_SECTION_NAME, SECTION_INFO1, "Endar notification service paused ");
+
+            }
+            catch (Exception ex)
+            {
+                erh.LogWarning("Endar notification service pausing " + ex.ToString(), true);
+            }
+            //base.OnPause();
+        }
+
         protected override void OnContinue()
         {
-            erh.LogWarning("Endar notification service is working now ", true); 
-            if (IS_WRITE_TO_SYSTEM_TABLE)
+            erh.LogWarning("Endar notification service is working now ", true);
+            if (IS_WRITE_TO_SYSTEM_TABLE && da != null)
                 da.Update_System_Status_LastServiceRun(SYSTEM_SECTION_NAME, SECTION_INFO1, "Endar notification is working  ");
+            base.OnContinue();
         }
+        
     }
 }

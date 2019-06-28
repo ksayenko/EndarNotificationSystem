@@ -41,22 +41,20 @@ namespace NotificationSystem
 
                 foreach (ServiceController scTemp in scServices)
                 {
+                    //erh.LogWarning("service  = " + scTemp.ServiceName + " " + scTemp.Status.ToString());
 
                     if (scTemp.ServiceName == strNotificationSystemName)
                     {
                         ServiceController sc = new ServiceController(strNotificationSystemName);
-                        erh.LogWarning("Status = " + sc.Status);
-                        erh.LogWarning("Can Pause and Continue = " + sc.CanPauseAndContinue);
-                        erh.LogWarning("Can ShutDown = " + sc.CanShutdown);
-                        erh.LogWarning("Can Stop = " + sc.CanStop);
-                        if (sc.Status == ServiceControllerStatus.Stopped)
+                                          
+                        erh.LogWarning(nsc.ExitCode.ToString());
+                      
+
+                        if (sc.Status == ServiceControllerStatus.Stopped && 
+                            nsc.ExitCode == NotificationService.EXIT_NEED_RESTART)
                         {
                             sc.Start();
-                            while (sc.Status == ServiceControllerStatus.Stopped)
-                            {
-                                Thread.Sleep(1000);
-                                sc.Refresh();
-                            }
+                            //RestartService(strNotificationSystemName, 1000);                            
                         }
 
                     }
@@ -64,9 +62,9 @@ namespace NotificationSystem
             }
             catch (Exception ex)
             {
-                //LogHandler erh1 = new LogHandler("EnDARDatabaseNotificationService", "program main");                
-                //erh1.LogWarning("error in program main" + ex.ToString());
-                //erh1.LogError("Program.main()", ex);       
+                LogHandler erh1 = new LogHandler("EnDARDatabaseNotificationService", "program main");
+                erh1.LogWarning("error in program main" + ex.ToString());
+                erh1.LogError("Program.main()", ex);       
             }
 
         }
