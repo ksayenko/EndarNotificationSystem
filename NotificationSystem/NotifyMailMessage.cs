@@ -621,7 +621,7 @@ namespace NotificationSystem
             }
         }
 
-        bool WriteFileToTheDisk(string tablename, string batch, string Data_Source, string InitialCatalog, string DatabaseUser, string DatabasePassword, out string filelocation)
+        bool WriteFileToTheDisk(string tablename, string batch, string Data_Source, string initialCatalog, string DatabaseUser, string DatabasePassword, out string filelocation)
         {
             bool returnvalue = true;
             filelocation = "";
@@ -633,12 +633,12 @@ namespace NotificationSystem
                 try
                 {
 
-                    DataAccess da = new DataAccess(Data_Source, InitialCatalog, DatabaseUser, DatabasePassword);
+                    DataAccess da = new DataAccess(Data_Source, initialCatalog, DatabaseUser, DatabasePassword);
                     DataTable dt = da.GetDataTableForAttachment(tablename, batch);                    
 
                     if (dt != null && dt.Rows.Count > 0)
                     {
-                        string filename = tablename + GetExtensionDate(da.Datetime_Now_PST()) + ".csv";
+                        string filename = initialCatalog+"_"+tablename + GetExtensionDate(da.Datetime_Now_PST()) + ".csv";
                         if (!Directory.Exists(_emailpath))
                             Directory.CreateDirectory(_emailpath);
 

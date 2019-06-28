@@ -342,10 +342,11 @@ namespace SendMail
                    //restart service needed
                     if (_ns != null && _ns.CanStop)
                     {
-                        _ns.ExitCode = 55;//need restart
+                        _ns.ExitCode = NotificationService.EXIT_NEED_RESTART;
                         this._ns.Stop();
+                        Thread.Sleep(1000);
                         logHandler.LogWarning("Stopping service");
-                        Environment.Exit(55);
+                        //Environment.Exit(55);                        
                     }
 
                 }
